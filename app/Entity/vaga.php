@@ -77,4 +77,15 @@ class Vaga{
                                       ->fetchAll(PDO::FETCH_CLASS,self::class);
 
     } 
+
+
+    /** Método para buscar uma vaga com base no seu ID
+     * @param integer id
+     * return Vaga
+     */
+    public static function getVaga($id){   
+        return (new Database('vagas'))->select('id=' .(int)$id)
+                                      ->fetchObject(self::class);
+
+    }
 }

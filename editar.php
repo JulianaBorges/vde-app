@@ -4,16 +4,31 @@ require __DIR__.'/vendor/autoload.php';
 
 use \App\Entity\Vaga;
 
-$obVaga = new Vaga;
 
+//validação do id
+// if(!isset($_GET['id']) or !is_numeric($_GET['id'])){
+//     header('location: index.php?status=error');
+//     exit;
+// }
+
+
+    // Use $id como quiser...
+    $obVaga = Vaga::getVaga($_GET['id']);
+
+    echo "<pre>"; print_r($obVaga); echo "</pre>"; exit;
+
+
+
+
+//validação do post
 if(isset($_POST['titulo'],$_POST['descricao'],$_POST['ativo'])){
     
+   
     $obVaga->titulo     = $_POST['titulo'];
     $obVaga->descricao  = $_POST['descricao'];
     $obVaga->ativo      = $_POST['ativo'];
-    $obVaga->cadastrar();
-
-    // echo "<pre>"; print_r($obVaga); echo "</pre>"; exit;
+    
+    
 
     header('location: index.php?status=success');
 

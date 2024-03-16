@@ -39,7 +39,6 @@ class Database {
      */
     private $table;
 
-
     /**
      * Instancia de conexão com o banco de dados
      * @var PDO
@@ -89,8 +88,6 @@ class Database {
         }       
     }
 
-
-
     /**
      * Método responsavel por inserir dados no banco
      * @param array $value [field => value]
@@ -120,19 +117,18 @@ class Database {
      * @paran string $fields
      * @return PDOStatement
      */
-
     public function select($where = null, $order = null, $limit = null, $fields = '*') {
         
         // DADOS DA QUERY
         $whereClause = !is_null($where) ? ' WHERE ' . $where : '';
         $orderClause = !is_null($order) ? ' ORDER BY ' . $order : '';
         $limitClause = !is_null($limit) ? ' LIMIT ' . $limit : '';
-    
+   
         // MONTA A QUERY
         $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $whereClause . $orderClause . $limitClause;
-        
+
         return $this->execute($query);
+
     }
-    
     
 }

@@ -9,18 +9,14 @@
                         <td>'.$vaga->descricao.'</td>
                         <td>'.($vaga->ativo == 's' ? 'Ativo' : 'Inativo').'</td>
                         <td>'.$vaga->data.'</td>
-                        <td> <a href="edita.php">
+                        <td> <a href="editar.php?id='.$vaga->id.'">
                             <button type="button" class="btn btn-warning">EDITAR</button>
                         </a></td>
-                        <td> <a href="excluir.php">
+                        <td><a href="excluir.php?id='.$vaga->id.'">
                             <button type="button" class="btn btn-danger">EXCLUIR</button>
                         </a></td>
-                       
-                        <td></td>
                     </tr>';
     }
-
-
 ?>
 
 <main>
@@ -35,7 +31,7 @@
         </div>
         
 
-        <table class="table table-dark mt-3">
+        <table class="table table-dark mt-3 table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -43,7 +39,7 @@
                     <th>Descrição</th>
                     <th>Status</th>
                     <th>Data</th>
-                    <th>Ações</th>
+                    <th colspan="2">Ações</th>
                 </tr>
             </thead>
             <tbody>
