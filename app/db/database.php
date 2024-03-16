@@ -112,4 +112,27 @@ class Database {
         // retorno o id inserido
         return $this->connection->lastInsertId();
     }
+
+    /**Método responsavel por executar uma consulta no banco 
+     * @param string $where
+     * @param string $order
+     * @paran string $limit
+     * @paran string $fields
+     * @return PDOStatement
+     */
+
+    public function select($where = null, $order = null, $limit = null, $fields = '*') {
+        
+        // DADOS DA QUERY
+        $whereClause = !is_null($where) ? ' WHERE ' . $where : '';
+        $orderClause = !is_null($order) ? ' ORDER BY ' . $order : '';
+        $limitClause = !is_null($limit) ? ' LIMIT ' . $limit : '';
+    
+        // MONTA A QUERY
+        $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $whereClause . $orderClause . $limitClause;
+        
+        return $this->execute($query);
+    }
+    
+    
 }
