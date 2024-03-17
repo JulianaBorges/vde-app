@@ -64,6 +64,22 @@ class Vaga{
 
     }
 
+    /**
+     * Método responsavel pelo update
+     * return boolean
+     */
+    
+    public function atualizar(){
+
+        return (new Database('vagas')) ->update('id = '.$this->id,[
+                
+                'titulo'        => $this->titulo,
+                'descricao'     => $this->descricao,
+                'ativo'         => $this->ativo,
+                'data'          => $this->data,
+        ]);
+    }
+
     /** Metodo responsavel por obter as vagas do banco de dados
      * @param string $where
      * @param string $order
@@ -78,13 +94,13 @@ class Vaga{
 
     } 
 
-
     /** Método para buscar uma vaga com base no seu ID
      * @param integer id
      * return Vaga
      */
     public static function getVaga($id){   
-        return (new Database('vagas'))->select('id=' .(int)$id)
+        
+        return (new Database('vagas'))->select('id=' .$id)
                                       ->fetchObject(self::class);
 
     }

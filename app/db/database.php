@@ -55,8 +55,7 @@ class Database {
             $this->setConnection();
     }
 
-    /**
-     * Metado responsável por criar uma canexao com a bonco de dados
+    /** Metado responsável por criar uma canexao com a bonco de dados
      */
     private function setConnection(){
         try {
@@ -69,8 +68,7 @@ class Database {
         }        
     }
 
-    /**
-     * Metodo responsavel por executar queires dentro do banco de dados
+    /** Metodo responsavel por executar queires dentro do banco de dados
      * @param string $query
      * @param array $params
      * @return PDOStatement
@@ -88,8 +86,7 @@ class Database {
         }       
     }
 
-    /**
-     * Método responsavel por inserir dados no banco
+    /** Método responsavel por inserir dados no banco
      * @param array $value [field => value]
      * @return integer 
      */
@@ -128,6 +125,26 @@ class Database {
         $query = 'SELECT ' . $fields . ' FROM ' . $this->table . $whereClause . $orderClause . $limitClause;
 
         return $this->execute($query);
+
+    }
+
+    /** Método responsavel para atualizar os dado no bando de dados
+     * @param string $where
+     * @param array $value [field = value]
+     * return boolean 
+     */
+    public function update($where, $values){
+
+    // DADOS DA QUERY
+        $fields = array_keys($values);
+
+        //MONTA A QUERY
+        $query = 'UPDATE ' . $this->table . ' SET ' . implode('=?,',$fields) . '=? WHERE ' .$where;        
+        $this ->execute($query, array_values($values));
+
+        return true;
+
+
 
     }
     
