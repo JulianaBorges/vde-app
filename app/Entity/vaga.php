@@ -6,40 +6,34 @@ use \App\Db\Database;
 use \PDO;
 
 class Vaga{
-    /**
-     * Identificador único da vaga
+    /** Identificador único da vaga
      * @var integer
      */
     public $id;
 
-    /**
-     * Título da vaga
+    /** Título da vaga
      * @var string
      */
     public $titulo;
 
-    /**
-     * Descrição da vaga (pode conter html)
+    /** Descrição da vaga (pode conter html)
      * @var string
      */
 
     public $descricao;
 
-     /**
-      * Define se a vaga ativa
+     /** Define se a vaga ativa
       * @var string (s/n)
       */
 
     public $ativo;
 
-      /** 
-       * Data de publicação da vaga
+    /** Data de publicação da vaga
        * @var string
        */
     public $data;
 
-    /**
-     * Método responsavel por cadastrar uma nova vagano banco
+    /** Método responsavel por cadastrar uma nova vagano banco
      *@return boolean 
      */
     public function cadastrar(){
@@ -64,8 +58,7 @@ class Vaga{
 
     }
 
-    /**
-     * Método responsavel pelo update
+    /** Método responsavel pelo update
      * return boolean
      */
     
